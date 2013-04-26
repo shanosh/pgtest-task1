@@ -25,7 +25,7 @@ class RangeFormatterText extends PHPUnit_Framework_TestCase{
 	public function testZeroToPositiveRange(){
 	
 		$rangeFormatter = new RangeFormatter(0, 5);
-		$this->assertEquals("0 1 2 Fizz 4 Buzz", $rangeFormatter->generateOutput());
+		$this->assertEquals("FizzBuzz 1 2 Fizz 4 Buzz", $rangeFormatter->generateOutput());
 	}
 	
 	/**
@@ -70,7 +70,7 @@ class RangeFormatterText extends PHPUnit_Framework_TestCase{
 	/**
 	 * if a non numerical value was passed as the start value
 	 */
-	public function testNonNumericRange(){
+	public function testNonNumericStart(){
 		
 		try{
 			$rangeFormatter = new RangeFormatter('se', 16);
@@ -85,7 +85,7 @@ class RangeFormatterText extends PHPUnit_Framework_TestCase{
 	/**
 	 * if a non numerical value was passed as the end value
 	 */
-	public function testNonNumericRange(){
+	public function testNonNumericEnd(){
 	
 		try{
 			$rangeFormatter = new RangeFormatter(3, 'ere');
