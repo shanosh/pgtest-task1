@@ -25,7 +25,7 @@ class RangeFormatterText extends PHPUnit_Framework_TestCase{
 	public function testZeroToPositiveRange(){
 	
 		$rangeFormatter = new RangeFormatter(0, 5);
-		$this->assertEquals("FizzBuzz 1 2 Fizz 4 Buzz", $rangeFormatter->generateOutput());
+		$this->assertEquals("FizzBuzz Bazz 2 Fizz 4 Buzz", $rangeFormatter->generateOutput());
 	}
 	
 	/**
@@ -62,8 +62,8 @@ class RangeFormatterText extends PHPUnit_Framework_TestCase{
 	 */
 	public function testPositiveLowerToHigherRange(){
 	
-		$rangeFormatter = new RangeFormatter(12, 16);
-		$this->assertEquals("Fizz 13 14 FizzBuzz 16", $rangeFormatter->generateOutput());
+		$rangeFormatter = new RangeFormatter(4, 11);
+		$this->assertEquals("4 Buzz Fizz Bazz 8 Fizz Buzz Bazz", $rangeFormatter->generateOutput());
 		
 	}
 	
@@ -94,6 +94,17 @@ class RangeFormatterText extends PHPUnit_Framework_TestCase{
 		}
 	
 		$this->fail('An exception was expected but not raised');
+	
+	}
+	
+	/**
+	 * if start value is positive and end value is greater than start and has
+	 * a number which has multiple devisors
+	 */
+	public function testPositiveLowerToHigherRangeWithZero(){
+	
+		$rangeFormatter = new RangeFormatter(0, 11);
+		$this->assertEquals("FizzBuzz Bazz 2 Fizz 4 Buzz Fizz Bazz 8 Fizz Buzz Bazz", $rangeFormatter->generateOutput());
 	
 	}
 	
