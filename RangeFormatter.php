@@ -28,6 +28,13 @@ class RangeFormatter{
 	public $output;
 	
 	/**
+	 * 
+	 * 
+	 * @var Array
+	 */
+	public $outputRange;
+	
+	/**
 	 * The constructor accepts a positive integer range.
 	 * It will throw out an exception if else
 	 *
@@ -66,6 +73,13 @@ class RangeFormatter{
 			return $this->output = '';
 		}
 		
+		/**
+		 * used to keep an incremental track of consecutive Fizzes/Buzzes
+		 * Once there is a consecutive Fizz and a Buzz this increments up to 2 and a Bazz is displayed
+		 * instead of the integer and the value of this becomes 0 again
+		 */
+		$bazzStatus = 0;
+		
 		//return generated output
 		foreach ($this->range as $n){
 			$printInt = true;
@@ -74,13 +88,24 @@ class RangeFormatter{
 				if($n % $multiplier == 0){
 					$this->output .= $label;
 					$printInt = false;
+					
+					//if it is a fizz or a buzz increment the bazzStatus by 1
+					if($multiplier == 3 || $multiplier = 5){
+						$bazzStatus++;
+					}
 				}
 			}
-				
-			if($printInt){
+			
+			//if bazzStatus has reached stage 2 we display 'Bazz' or else the integer	
+			if($printInt && $bazzStatus == 2){
+				$this->output .= 'Bazz';
+				$bazzStatus = 0;
+			}else if($printInt){
 				$this->output .= $n;
+				$bazzStatus = 0;
 			}
-				
+			
+			
 			$this->output .= ' ';
 		}
 		
