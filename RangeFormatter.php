@@ -90,7 +90,7 @@ class RangeFormatter{
 					$printInt = false;
 					
 					//if it is a fizz or a buzz increment the bazzStatus by 1
-					if($multiplier == 3 || $multiplier = 5){
+					if($multiplier == 3 || $multiplier == 5){
 						$bazzStatus++;
 					}
 				}
